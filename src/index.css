@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+.bg-grid-pattern {
+  /* This creates a 40px by 40px grid using thin, semi-transparent lines */
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--color-base-content) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-base-content) 1px, transparent 1px);
+  /* Using 5% opacity so the grid is extremely subtle and clean */
+  opacity: 0.05; 
+}
+
+/* Enable smooth scrolling app-wide */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: Respect users who disable animations in their OS settings */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
