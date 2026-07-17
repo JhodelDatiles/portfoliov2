@@ -3,6 +3,7 @@ import ScrollReveal from "./ScrollReveal";
 
 const StackRightCol = () => {
   return (
+    <ScrollReveal>
     <div className="w-full max-w-sm mx-auto flex flex-col gap-3 p-4 select-none bg-neutral-950 rounded-2xl border border-neutral-800 shadow-2xl overflow-hidden">
       
       {/* LAYER 1: REACT */}
@@ -66,6 +67,7 @@ const StackRightCol = () => {
       </ScrollReveal>
 
     </div>
+    </ScrollReveal>
   );
 };
 

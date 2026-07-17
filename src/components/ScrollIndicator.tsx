@@ -113,3 +113,5 @@ export const ScrollIndicator = () => {
     </div>
   );
 };
+
+export default ScrollIndicator

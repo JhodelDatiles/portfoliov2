@@ -2,13 +2,14 @@ import Ticker from "../Ticker"; // Import your film-strip Ticker component
 import Typewriter from "../Typewriter";
 import HireMeEnvelope from "../HireMeEnvelope";
 import ExploreButton from "../ExploreButton";
+import ScrollReveal from "../ScrollReveal"
 
 const HeroSection = () => {
   return (
     <section
       id="hero"
       // 60% DOMINANT: Deep dark background (#020617) for high-contrast presentation
-      className="relative bg-[#020617] text-white min-h-screen flex items-center px-6 md:px-16 lg:px-24 py-20 md:py-0 overflow-hidden border-b border-[#facc15]/20"
+      className="relative bg-[#020617] text-white min-h-screen flex items-center px-6 md:px-16 lg:px-24 py-20 md:py-0 overflow-hidden"
     >
       <div className="mt-10 max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10">
         {/* ================= LEFT COLUMN: HERO CONTENT (60%) ================= */}
@@ -51,12 +52,17 @@ const HeroSection = () => {
         </div>
 
         {/* ================= RIGHT COLUMN: GRAPHIC CARDS (40%) ================= */}
+
         <div className="lg:col-span-5 flex flex-col space-y-6 w-full h-full justify-center">
           {/* Top Showcase Card */}
+          <ScrollReveal>
           <ExploreButton />
+          </ScrollReveal>
 
           {/* Bottom Showcase Card */}
+          <ScrollReveal>
           <HireMeEnvelope />
+          </ScrollReveal>
         </div>
       </div>
     </section>
