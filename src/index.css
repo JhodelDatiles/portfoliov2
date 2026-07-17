@@ -1,24 +1,94 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-.bg-grid-pattern {
-  /* This creates a 40px by 40px grid using thin, semi-transparent lines */
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, var(--color-base-content) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-base-content) 1px, transparent 1px);
-  /* Using 5% opacity so the grid is extremely subtle and clean */
-  opacity: 0.05; 
+@theme {
+  --color-blue: #dbeafe;
+  --color-yellow: #facc15;
+  --color-black: #020617;
 }
 
-/* Enable smooth scrolling app-wide */
+/* ==========================================================================
+   FONT-FACE DECLARATIONS
+   ========================================================================== */
+
+/* 2. Fanky Bubble Graffiti (Regular) */
+@font-face {
+  font-family: "FankyBubbleRegular";
+  src: url("/fonts/FankyBubbleGraffiti-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 4. Philly Sans */
+@font-face {
+  font-family: "PhillySans";
+  src: url("/fonts/PhillySans.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   TAILWIND V4 THEME & UTILITIES
+   ========================================================================== */
+
+@theme {
+  /* This creates the 'animate-marquee' utility class */
+  --animate-marquee: marquee 20s linear infinite;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Custom CSS Utility Classes for your Fonts */
+
+.font-bubble-reg {
+  font-family: "FankyBubbleRegular", sans-serif;
+}
+
+.font-philly {
+  font-family: "PhillySans", sans-serif;
+}
+
+/* ==========================================================================
+   GLOBAL HTML BEHAVIOR
+   ========================================================================== */
+
+/* Enable smooth scrolling app-wide and hide scrollbars */
 html {
   scroll-behavior: smooth;
+
+  /* IE and Edge */
+  -ms-overflow-style: none;
+
+  /* Firefox */
+  scrollbar-width: none;
 }
 
-/* Optional: Respect users who disable animations in their OS settings */
+/* Chrome, Safari and Opera scrollbar removal */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Respect users who disable animations in their OS settings */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 }
+
+h1, h2, h3, h4, h5, h6 {
+  background-color: #020617;
+  color: #facc15;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
