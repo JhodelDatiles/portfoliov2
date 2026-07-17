@@ -21,7 +21,7 @@ export default function Navbar() {
       className={`font-philly fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
         isScrolled
           // Scrolled floating container: Dark backdrop with a subtle border that matches the Hero border style
-          ? "mx-6 md:mx-16 lg:mx-24 mt-5 py-2 bg-[#020617]/90 backdrop-blur-md border border-[#facc15]/20 rounded-2xl shadow-2xl"
+          ? "mx-6 md:mx-16 lg:mx-24 mt-5 py-2 border-4 bg-[#020617]/90 backdrop-blur-md border border-[#facc15]/20 rounded-2xl shadow-2xl"
           // At the top: Blends seamlessly with the dark Hero background canvas
           : "py-5 bg-transparent"
       }`}
@@ -52,6 +52,7 @@ export default function Navbar() {
           <div className="flex-none">
             <ul className="menu menu-horizontal px-1 gap-1">
               {[
+                { href: "#hero", label: "home", tip: "hero" },
                 { href: "#stack", label: "Stack", tip: "Tech stack" },
                 { href: "#experience", label: "Experience", tip: "Past work experiences" },
                 { href: "#projects", label: "Projects", tip: "Good stuff" },

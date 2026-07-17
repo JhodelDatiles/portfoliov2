@@ -88,107 +88,140 @@ const HireMeEnvelope = () => {
         </div>
       </div>
 
-      {/* ================= MODAL DIALOG (THEMED DIGITAL LETTER PAPER) ================= */}
+      {/* ================= MODAL DIALOG (YELLOW LEGAL PAD THEME) ================= */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
           
-          {/* Custom Document Body matching the Slate & Yellow Theme */}
-          <div className="relative w-full max-w-lg bg-slate-900 text-white rounded-2xl shadow-2xl p-6 md:p-8 border border-white/10 font-mono ring-1 ring-white/5 animate-slideUp overflow-hidden">
+          {/* Main Legal Pad Body Container */}
+          <div className="relative w-full max-w-lg bg-[#fefcbf] text-neutral-800 rounded-sm shadow-2xl pt-12 pb-6 px-4 md:px-6 border border-amber-200/70 font-sans animate-slideUp overflow-hidden">
             
-            {/* Top Security Line Accent utilizing matching branding gold */}
-            <div className="absolute top-0 right-0 left-0 h-1 bg-[#facc15]" />
+            {/* 1. TOP BROWN CARDBOARD BINDING STRIP */}
+            <div className="absolute top-0 right-0 left-0 h-10 bg-gradient-to-b from-stone-800 to-stone-900 border-b-2 border-stone-950 flex items-center justify-center shadow-md z-30">
+              {/* Binder Staple Details */}
+              <div className="flex gap-16 opacity-40">
+                <div className="w-4 h-1 bg-stone-400 rounded-sm" />
+                <div className="w-4 h-1 bg-stone-400 rounded-sm" />
+                <div className="w-4 h-1 bg-stone-400 rounded-sm" />
+              </div>
+            </div>
 
-            {/* Close Button / Cancel */}
+            {/* 2. MICRO-PERFORATION LINES */}
+            <div className="absolute top-10 left-0 right-0 h-px border-t border-dashed border-amber-700/30 z-20" />
+
+            {/* 3. VERTICAL RED MARGIN DOUBLE-RULE */}
+            <div className="absolute top-0 bottom-0 left-14 md:left-16 w-0.5 bg-red-400/50 z-10" />
+            <div className="absolute top-0 bottom-0 left-[58px] md:left-[66px] w-0.5 bg-red-400/50 z-10" />
+
+            {/* Close Button disguised smoothly in top binding sector */}
             <button 
               onClick={(e) => { e.stopPropagation(); setIsOpen(false); }}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#facc15] hover:border-[#facc15] transition-colors duration-200 bg-slate-800/80 z-10 font-sans"
-              style={{ lineHeight: 'initial' }}
+              className="absolute top-1 right-2 w-7 h-7 flex items-center justify-center text-stone-400 hover:text-[#facc15] transition-colors z-40 text-sm font-bold"
             >
               ✕
             </button>
 
-            {/* Letter Header */}
-            <div className="border-b border-dashed border-white/10 pb-3 mb-6 mt-2 flex justify-between items-center">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#facc15]">SECURE_MESSAGE.TXT</span>
-              <span className="text-[10px] text-white/30">REF: CL-2026</span>
-            </div>
+            {/* 4. THE BLUE NOTEPAD HORIZONTAL WRITING LINES BACKGROUND */}
+            <div className="absolute inset-0 top-12 bg-linear-lines pointer-events-none z-0" />
 
-            {/* Interactive Form Fields */}
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+            {/* Content Container shifted right to clear the red lines margins */}
+            <div className="relative z-10 pl-12 md:pl-16 pr-2 pt-2">
               
-              {/* Field: Name */}
-              <div className="flex flex-col md:flex-row md:items-end gap-2">
-                <label className="text-xs font-bold text-white/40 uppercase min-w-[80px]">FROM:</label>
-                <input 
-                  type="text" 
-                  placeholder="Your name" 
-                  className="flex-1 bg-transparent border-b border-white/10 focus:border-[#facc15] outline-none text-sm px-1 py-0.5 tracking-wide text-white font-sans"
-                  required
-                />
+              {/* Notepad Meta Context */}
+              <div className="flex justify-between items-center mb-6 text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
+                <span>MEMO_PAD // HIRE_ME</span>
+                <span className="font-bold text-red-500/80">PAGE.01</span>
               </div>
 
-              {/* Field: Email */}
-              <div className="flex flex-col md:flex-row md:items-end gap-2">
-                <label className="text-xs font-bold text-white/40 uppercase min-w-[80px]">EMAIL:</label>
-                <input 
-                  type="email" 
-                  placeholder="your@email.com" 
-                  className="flex-1 bg-transparent border-b border-white/10 focus:border-[#facc15] outline-none text-sm px-1 py-0.5 tracking-wide text-white font-sans"
-                  required
-                />
-              </div>
+              {/* Form Input Deck */}
+              <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+                
+                {/* Field: Name */}
+                <div className="flex flex-col sm:flex-row sm:items-end gap-1">
+                  <label className="text-xs font-mono font-black text-blue-600/70 tracking-wide uppercase min-w-[60px]">
+                    FROM:
+                  </label>
+                  <input 
+                    type="text" 
+                    placeholder="Enter your name..." 
+                    className="flex-1 bg-transparent border-b border-transparent font-medium tracking-wide text-neutral-800 focus:outline-none placeholder:text-neutral-400 text-base font-serif italic"
+                    required
+                  />
+                </div>
 
-              {/* Field: Message */}
-              <div className="flex flex-col gap-2 pt-2">
-                <label className="text-xs font-bold text-white/40 uppercase">MESSAGE:</label>
-                <textarea 
-                  rows={4}
-                  placeholder="The_Message" 
-                  className="w-full bg-slate-950/40 border border-white/10 rounded-xl p-3 focus:border-[#facc15] focus:ring-1 focus:ring-[#facc15] outline-none text-sm font-sans tracking-wide leading-relaxed resize-none text-white placeholder:text-white/20"
-                  required
-                />
-              </div>
+                {/* Field: Email */}
+                <div className="flex flex-col sm:flex-row sm:items-end gap-1">
+                  <label className="text-xs font-mono font-black text-blue-600/70 tracking-wide uppercase min-w-[60px]">
+                    EMAIL:
+                  </label>
+                  <input 
+                    type="email" 
+                    placeholder="your.email@domain.com" 
+                    className="flex-1 bg-transparent border-b border-transparent font-medium tracking-wide text-neutral-800 focus:outline-none placeholder:text-neutral-400 text-base font-serif italic"
+                    required
+                  />
+                </div>
 
-              {/* Form Action Controls */}
-              <div className="flex justify-end items-center gap-3 pt-4 border-t border-dashed border-white/10">
-                <button
-                  type="button"
-                  onClick={() => setIsOpen(false)}
-                  className="px-4 py-1.5 text-xs text-white/60 rounded-lg hover:bg-white/5 transition-colors uppercase font-bold"
-                >
-                  Discard
-                </button>
-                <button
-                  type="submit"
-                  className="px-6 py-1.5 text-xs bg-[#facc15] text-slate-950 rounded-lg hover:bg-[#ebd113] shadow transition-colors uppercase font-black tracking-wider"
-                >
-                  Send Letter
-                </button>
-              </div>
+                {/* Field: Message */}
+                <div className="flex flex-col gap-1 pt-1">
+                  <label className="text-xs font-mono font-black text-blue-600/70 tracking-wide uppercase">
+                    MESSAGE CONTENT:
+                  </label>
+                  {/* Styled with line height perfectly aligned to match the background ruling */}
+                  <textarea 
+                    rows={6}
+                    placeholder="Write your note down here..." 
+                    className="w-full bg-transparent border-none text-neutral-800 focus:outline-none text-base tracking-wide leading-[28px] font-serif italic resize-none placeholder:text-neutral-400 pt-[1px]"
+                    required
+                  />
+                </div>
 
-            </form>
+                {/* Form Action Controls */}
+                <div className="flex justify-end items-center gap-4 pt-4 mt-4 border-t border-neutral-300/60">
+                  <button
+                    type="button"
+                    onClick={() => setIsOpen(false)}
+                    className="px-4 py-1.5 text-xs text-neutral-500 font-mono font-bold uppercase hover:text-neutral-800 transition-colors"
+                  >
+                    Tear Off
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-6 py-2 text-xs font-mono font-black uppercase tracking-wider bg-neutral-900 text-[#facc15] hover:bg-neutral-800 rounded shadow-md transition-all active:translate-y-px"
+                  >
+                    Submit Note
+                  </button>
+                </div>
+
+              </form>
+            </div>
           </div>
         </div>
       )}
 
-      {/* Styled Animations Scoped */}
+      {/* Embedded pad styling definitions */}
       <style>{`
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
         }
         @keyframes slideUp {
-          from { opacity: 0; transform: translateY(20px) scale(0.95); }
+          from { opacity: 0; transform: translateY(30px) scale(0.97); }
           to { opacity: 1; transform: translateY(0) scale(1); }
         }
         .animate-fadeIn {
           animation: fadeIn 0.3s ease forwards;
         }
         .animate-slideUp {
-          animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: slideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         .rotate-x-180 {
           transform: rotateX(180deg);
+        }
+        /* Custom repeating pattern generator for blue paper lines running at 28px steps */
+        .bg-linear-lines {
+          background-image: linear-gradient(#bbeeeb 1px, transparent 1px);
+          background-size: 100% 28px;
+          background-origin: content-box;
         }
       `}</style>
     </>
