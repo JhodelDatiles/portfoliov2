@@ -22,7 +22,7 @@ export default function Navbar() {
     { href: "#stack", label: "Stack", tip: "Tech stack" },
     { href: "#experience", label: "Experience", tip: "Past work experiences" },
     { href: "#projects", label: "Projects", tip: "Good stuff" },
-    { href: "#contacts", label: "Contacts", tip: "Become associates?" }
+    { href: "#contacts", label: "Contacts", tip: "Become associates?" },
   ];
 
   return (
@@ -35,19 +35,15 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="navbar p-0 min-h-0 flex justify-between items-center relative">
-          
           {/* Logo / Brand Name */}
           <div className="flex-1">
-            <a
-              href="/"
-              className="font-bold tracking-tight inline-block"
-            >
-              <img 
+            <a href="/" className="font-bold tracking-tight inline-block">
+              <img
                 className={`tracking-tight transition-all duration-300 ${
                   isScrolled ? "h-[30px]" : "h-[40px]"
-                }`} 
-                src={"/public/deltagwhite.png"} 
-                alt="Logo" 
+                }`}
+                src={"/public/deltagwhite.png"}
+                alt="Logo"
               />
             </a>
           </div>
@@ -88,9 +84,19 @@ export default function Navbar() {
                 stroke="currentColor"
               >
                 {isOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 )}
               </svg>
             </button>
@@ -112,7 +118,6 @@ export default function Navbar() {
               </ul>
             )}
           </div>
-
         </div>
       </div>
     </header>

@@ -1,5 +1,5 @@
-import React from 'react';
-import ScrollReveal from "./ScrollReveal";
+import React from "react";
+import ScrollReveal from "../ScrollAnimations/ScrollReveal";
 
 const StackLeftCol = () => {
   return (
@@ -24,19 +24,28 @@ const StackLeftCol = () => {
                 MERN Stack
               </h3>
             </div>
-            
+
             <div className="w-full border-b border-dashed border-neutral-800 pt-1" />
-            
+
             <div className="space-y-4 pt-2 font-mono text-[11px] text-neutral-400 leading-relaxed">
               <p>
-                An integrated, uniform JavaScript pipeline utilizing a shared structural runtime across client and data tiers.
+                An integrated, uniform JavaScript pipeline utilizing a shared
+                structural runtime across client and data tiers.
               </p>
               <div className="space-y-2 text-neutral-500">
                 <p className="flex gap-2">
-                  <span className="text-[#facc15] font-bold">» Unified Language:</span>Everything runs on JavaScript
+                  <span className="text-[#facc15] font-bold">
+                    » Unified Language:
+                  </span>
+                  Everything runs on JavaScript
                 </p>
                 <p className="flex gap-2">
-                  <span className="text-[#facc15] font-bold">» JSON Friendly:</span>All data travels through the stack in JSON formats, which makes reading, transferring, and writing data incredibly efficient.
+                  <span className="text-[#facc15] font-bold">
+                    » JSON Friendly:
+                  </span>
+                  All data travels through the stack in JSON formats, which
+                  makes reading, transferring, and writing data incredibly
+                  efficient.
                 </p>
               </div>
             </div>
@@ -45,16 +54,24 @@ const StackLeftCol = () => {
           <div className="mt-8 border-t border-neutral-900 pt-4 font-mono flex flex-col gap-3">
             <div className="flex justify-between items-end">
               <div>
-                <span className="text-[9px] text-neutral-500 block uppercase tracking-wider">Deployment platforms</span>
-                <span className="text-xs font-bold text-neutral-300 uppercase">Render or Vercel</span>
+                <span className="text-[9px] text-neutral-500 block uppercase tracking-wider">
+                  Deployment platforms
+                </span>
+                <span className="text-xs font-bold text-neutral-300 uppercase">
+                  Render or Vercel
+                </span>
               </div>
               <div className="text-right">
-                <span className="text-xs font-black text-emerald-500 uppercase">Verified</span>
+                <span className="text-xs font-black text-emerald-500 uppercase">
+                  Verified
+                </span>
               </div>
             </div>
-            <div 
-              className="absolute bottom-0 right-0 w-8 h-8 bg-neutral-900 transition-transform duration-300 group-hover:scale-105 origin-bottom-right" 
-              style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%, 65% 35%)" }} 
+            <div
+              className="absolute bottom-0 right-0 w-8 h-8 bg-neutral-900 transition-transform duration-300 group-hover:scale-105 origin-bottom-right"
+              style={{
+                clipPath: "polygon(100% 0, 100% 100%, 0 100%, 65% 35%)",
+              }}
             />
           </div>
         </div>
