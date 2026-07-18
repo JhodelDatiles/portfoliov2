@@ -38,7 +38,7 @@ export default function Navbar() {
     <header
       className={`font-philly fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
         isScrolled
-          ? "mx-6 md:mx-16 lg:mx-24 mt-5 py-2 border-4 bg-[#020617]/90 backdrop-blur-md border border-yellow rounded-2xl shadow-2xl"
+          ? "mx-6 md:mx-16 lg:mx-24 mt-5 py-2 border-4 bg-[#020617]/90 backdrop-blur-md border border-yellow-400 rounded-2xl shadow-2xl"
           : "py-5 bg-transparent"
       }`}
     >
