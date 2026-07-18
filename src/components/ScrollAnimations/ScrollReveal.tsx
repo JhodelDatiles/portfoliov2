@@ -5,14 +5,19 @@ const ScrollReveal = ({ children, delay = 0 }) => {
   const ref = useRef(null);
 
   useEffect(() => {
+    // Detect mobile viewport bounds dynamically
+    const isMobile = window.innerWidth < 768;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Syncs live status so it reappears every single time
         setIsIntersecting(entry.isIntersecting);
       },
       { 
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px" 
+        // FIX: Lower threshold to 2% on mobile so tall, stacked layout cards 
+        // don't get stuck invisible trying to hit a 15% threshold.
+        threshold: isMobile ? 0.02 : 0.15,
+        // FIX: Remove the restrictive -50px margin on mobile screens to counter mobile browser bars.
+        rootMargin: isMobile ? "0px 0px -10px 0px" : "0px 0px -50px 0px" 
       }
     );
 
@@ -30,7 +35,7 @@ const ScrollReveal = ({ children, delay = 0 }) => {
       className={`transition-all duration-1000 ease-out transform ${
         isIntersecting 
           ? "opacity-100 translate-y-0" 
-          : "opacity-0 translate-y-8"
+          : "opacity-0 translate-y-6 md:translate-y-8"
       }`}
     >
       {children}

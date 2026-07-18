@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,14 +13,14 @@ export default function ScrollToTop() {
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
@@ -29,9 +29,9 @@ export default function ScrollToTop() {
       onClick={scrollToTop}
       aria-label="Back to top"
       className={`fixed bottom-6 right-6 z-50 btn btn-circle btn-primary bg-black shadow-lg cursor-pointer transition-all duration-300 ease-in-out ${
-        isVisible 
-          ? 'opacity-100 bg-black border-4 border-yellow translate-y-0 scale-100 pointer-events-auto' 
-          : 'opacity-0 translate-y-4 scale-75 pointer-events-none'
+        isVisible
+          ? "opacity-100 bg-black border-4 border-yellow translate-y-0 scale-100 pointer-events-auto"
+          : "opacity-0 translate-y-4 scale-75 pointer-events-none"
       }`}
     >
       {/* Up Arrow Icon */}

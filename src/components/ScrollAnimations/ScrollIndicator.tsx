@@ -6,7 +6,7 @@ export const SECTIONS = [
   { id: "stack", label: "Stack", tip: "Tech stack" },
   { id: "experience", label: "Experience", tip: "Past work experiences" },
   { id: "projects", label: "Projects", tip: "Good stuff" },
-  { id: "contacts", label: "Contacts", tip: "Become associates?" }
+  { id: "contacts", label: "Contacts", tip: "Become associates?" },
 ];
 
 // Simple custom event to synchronize the active section state across decoupled components
@@ -25,12 +25,11 @@ export const ScrollIndicator = () => {
     };
     window.addEventListener("activeSectionChange", handleSectionChange);
 
-    const observerOptions = {
-      root: null,
-      // Target elements as they cross the upper-middle of the screen
-      rootMargin: "-30% 0px -50% 0px", 
-      threshold: 0.1,
-    };
+const observerOptions = {
+  root: null,
+  rootMargin: "-40% 0px -40% 0px",
+  threshold: 0,
+};
 
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
@@ -40,7 +39,10 @@ export const ScrollIndicator = () => {
       });
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
 
     SECTIONS.forEach((section) => {
       const element = document.getElementById(section.id);
@@ -114,4 +116,4 @@ export const ScrollIndicator = () => {
   );
 };
 
-export default ScrollIndicator
+export default ScrollIndicator;

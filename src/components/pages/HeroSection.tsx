@@ -1,8 +1,8 @@
-import Ticker from "../Ticker"; // Import your film-strip Ticker component
-import Typewriter from "../Typewriter";
-import HireMeEnvelope from "../HireMeEnvelope";
-import ExploreButton from "../ExploreButton";
-import ScrollReveal from "../ScrollReveal"
+import Ticker from "../Animations/Ticker"; // Import your film-strip Ticker component
+import Typewriter from "../Animations/Typewriter";
+import HireMeEnvelope from "../HeroSectionCompo/HireMeEnvelope";
+import ExploreButton from "../HeroSectionCompo/ExploreButton";
+import ScrollReveal from "../ScrollAnimations/ScrollReveal";
 
 const HeroSection = () => {
   return (
@@ -52,16 +52,16 @@ const HeroSection = () => {
         </div>
 
         {/* ================= RIGHT COLUMN: GRAPHIC CARDS (40%) ================= */}
-
-        <div className="lg:col-span-5 flex flex-col space-y-6 w-full h-full justify-center">
+        {/* Added dynamic relative z-indexing here to ensure interactive overlays process correctly */}
+        <div className="lg:col-span-5 flex flex-col space-y-6 w-full h-full justify-center relative z-20">
           {/* Top Showcase Card */}
           <ScrollReveal>
-          <ExploreButton />
+            <ExploreButton />
           </ScrollReveal>
 
           {/* Bottom Showcase Card */}
           <ScrollReveal>
-          <HireMeEnvelope />
+            <HireMeEnvelope />
           </ScrollReveal>
         </div>
       </div>

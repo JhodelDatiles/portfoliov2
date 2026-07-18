@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-const Typewriter = ({ 
+const Typewriter = ({
   phrases = [
     { prefix: "Full-Stack", suffix: "Developer" },
-    { prefix: "Quality Assurance", suffix: "Tester" }
-  ], 
-  typingSpeed = 120, 
-  deletingSpeed = 60, 
-  pauseDuration = 2500 
+    { prefix: "Quality Assurance", suffix: "Tester" },
+  ],
+  typingSpeed = 120,
+  deletingSpeed = 60,
+  pauseDuration = 2500,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [step, setStep] = useState(0); // Shared progress step for both words
@@ -15,7 +15,10 @@ const Typewriter = ({
 
   const activePhrase = phrases[currentIndex];
   // Determine the maximum length between the prefix and suffix to know when to stop typing
-  const maxLen = Math.max(activePhrase.prefix.length, activePhrase.suffix.length);
+  const maxLen = Math.max(
+    activePhrase.prefix.length,
+    activePhrase.suffix.length,
+  );
 
   useEffect(() => {
     let timer;
@@ -46,7 +49,16 @@ const Typewriter = ({
     }
 
     return () => clearTimeout(timer);
-  }, [step, isDeleting, currentIndex, maxLen, typingSpeed, deletingSpeed, pauseDuration, phrases.length]);
+  }, [
+    step,
+    isDeleting,
+    currentIndex,
+    maxLen,
+    typingSpeed,
+    deletingSpeed,
+    pauseDuration,
+    phrases.length,
+  ]);
 
   // Slice both words at the exact same step progress
   const typedPrefix = activePhrase.prefix.substring(0, step);
@@ -59,7 +71,7 @@ const Typewriter = ({
         {typedPrefix || "\u00A0"}
         <span className="inline-block ml-1 w-[4px] h-[1em] bg-white animate-caret-blink" />
       </span>
-      
+
       {/* Line 2: 10% ACCENT (Bold Yellow) */}
       <span className="text-[#facc15] flex items-center">
         {typedSuffix || "\u00A0"}

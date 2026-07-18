@@ -1,10 +1,10 @@
-import StackRightCol from "../StackRightCol";
-import StackLeftCol from "../StackLeftCol";
+import StackRightCol from "../StackSectionCompo/StackRightCol";
+import StackLeftCol from "../StackSectionCompo/StackLeftCol";
 
 const ProjectsSection = () => {
   return (
-    <section 
-      id="stack" 
+    <section
+      id="stack"
       className="w-full min-h-screen bg-slate-100 dark:bg-[#020617] text-neutral-900 dark:text-white p-6 md:p-12 lg:p-20 flex flex-col justify-center transition-colors duration-300 select-none"
     >
       {/* Container: Balanced 2-Column Responsive Layout */}

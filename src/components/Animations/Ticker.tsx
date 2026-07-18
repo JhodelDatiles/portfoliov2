@@ -1,11 +1,18 @@
 import React from "react";
-import { Flame, Users, RefreshCw, Clock, ShieldCheck, Code } from "lucide-react";
+import {
+  Flame,
+  Users,
+  RefreshCw,
+  Clock,
+  ShieldCheck,
+  Code,
+} from "lucide-react";
 
 const tickerItems = [
   {
     id: 1,
     title: "Passion Driven",
-    desc: "Suffer for what you love.", 
+    desc: "Suffer for what you love.",
     icon: Flame,
   },
   {
@@ -45,8 +52,7 @@ const Ticker = () => {
   const tripleItems = [...tickerItems, ...tickerItems, ...tickerItems];
 
   return (
-    <div className="w-full bg-[#020617] py-2 overflow-hidden relative select-none z-40 border-y border-white/5">
-      
+    <div className="w-full bg-[#020617] py-2 overflow-hidden relative select-none z-20 border-y border-white/5">
       {/* Scoped Marquee Animations */}
       <style>{`
         @keyframes tickerScroll {
@@ -67,18 +73,14 @@ const Ticker = () => {
         {tripleItems.map((item, index) => {
           const IconComponent = item.icon;
           return (
-            <div 
-              key={`${item.id}-${index}`} 
-              className="flex items-center"
-            >
+            <div key={`${item.id}-${index}`} className="flex items-center">
               {/* Compact Modern Card Layout */}
               <div className="text-center h-14 bg-slate-900/60 border border-white/10 rounded-xl flex items-center px-4 shrink-0 space-x-3 min-w-[270px]">
-                
                 {/* Visual Icon Accent Tag */}
                 <div className="p-2 rounded-lg bg-[#facc15]/10 text-[#facc15] shrink-0">
                   <IconComponent className="w-4 h-4" />
                 </div>
-                
+
                 {/* Text content */}
                 <div className="flex flex-col text-center">
                   <h4 className="text-xs font-bold tracking-wider text-white uppercase leading-tight">

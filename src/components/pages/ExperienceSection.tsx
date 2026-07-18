@@ -1,22 +1,19 @@
 import React, { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 const experiences = [
   {
-    title: "Full-Stack Dev",
-    subtitle: "MERN Stack Projects // 2024 - present",
-    description: "Developing robust web applications like 'Ekomers' and 'iPaskil' using M.E.R.N stack. Applying a QA-first mindset to full-stack development, ensuring secure and efficient system performance.",
-    side: "left",
-  },
-  {
     title: "QA Intern",
     subtitle: "Sparkle Star International // Jan - Apr 2026",
-    description: "Worked in a fast-paced Agile environment, conducting manual and exploratory testing during short sprint cycles to identify functional defects and usability issues. Documented critical bugs using Jira to provide precise insights for resolution, and verified individual units to ensure system stability.",
+    description:
+      "Worked in a fast-paced Agile environment, conducting manual, regression and exploratory testing during short sprint cycles to identify functional defects and usability issues. Documented critical bugs using Jira to provide precise insights for resolution, and verified individual units to ensure system stability.",
+    side: "let",
+  },
+  {
+    title: "Coming soon...",
+    subtitle: "Coming soon...",
+    description:
+      "Coming soon...",
     side: "right",
   },
 ];
@@ -47,14 +44,7 @@ const WorkExperienceSection = () => {
       id="experience"
       className="flex flex-col relative w-full bg-[#020617] text-white py-24 overflow-hidden select-none"
     >
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 mb-16">
-        <h2 className="text-4xl md:text-5xl font-serif font-black tracking-tight uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-neutral-400">
-          Work Experience
-        </h2>
-        <div className="w-12 h-[2px] bg-[#facc15] mt-4" />
-      </div>
-
-      <div className="relative w-full max-w-5xl mx-auto px-6">
+      <div className="mt-10 relative w-full max-w-5xl mx-auto px-6">
         <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] md:-translate-x-1/2 z-0 bg-neutral-800" />
 
         <motion.div
@@ -133,9 +123,21 @@ const TimelineItem = ({ exp, progress, index, total }) => {
       <div className="absolute left-4 md:left-1/2 flex items-center justify-center -translate-x-1/2 z-20">
         <motion.div
           style={{
-            backgroundColor: useTransform(isPowered, [0, 1], ["#0b1329", "#facc15"]),
-            borderColor: useTransform(isPowered, [0, 1], ["#262626", "#020617"]),
-            scale: useTransform(progress, [activationThreshold - 0.1, activationThreshold], [0.8, 1]),
+            backgroundColor: useTransform(
+              isPowered,
+              [0, 1],
+              ["#0b1329", "#facc15"],
+            ),
+            borderColor: useTransform(
+              isPowered,
+              [0, 1],
+              ["#262626", "#020617"],
+            ),
+            scale: useTransform(
+              progress,
+              [activationThreshold - 0.1, activationThreshold],
+              [0.8, 1],
+            ),
           }}
           className="w-4 h-4 border-2 rounded-full shadow-[0_0_10px_rgba(0,0,0,0.5)] transition-colors duration-200"
         />
