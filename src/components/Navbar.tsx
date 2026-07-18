@@ -50,7 +50,7 @@ export default function Navbar() {
                 className={`tracking-tight transition-all duration-300 ${
                   isScrolled ? "h-[30px]" : "h-[40px]"
                 }`}
-                src={"/deltagwhite.png"}
+                src={"/public/deltagwhite.png"}
                 alt="Logo"
               />
             </a>
