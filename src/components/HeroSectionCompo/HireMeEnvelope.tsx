@@ -25,11 +25,11 @@ const HireMeEnvelope = () => {
   // --- DRAG HANDLERS ---
   const handleDragStart = (e: React.PointerEvent) => {
     if (e.button !== 0 && e.pointerType === "mouse") return;
-    
+
     isDragging.current = true;
     dragStart.current = { x: e.clientX, y: e.clientY };
     initialPos.current = { ...position };
-    
+
     (e.target as HTMLElement).setPointerCapture(e.pointerId);
   };
 
@@ -48,7 +48,13 @@ const HireMeEnvelope = () => {
     isDragging.current = false;
     try {
       (e.target as HTMLElement).releasePointerCapture(e.pointerId);
-    } catch (err) {}
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error(err.message); // Safe! TypeScript knows 'err' is an Error.
+      } else {
+        console.error("Caught a non-standard error:", err);
+      }
+    }
   };
 
   const resetModal = () => {
@@ -78,7 +84,7 @@ const HireMeEnvelope = () => {
         () => {
           setStatus("success");
           toast.success("✓ Note submitted successfully!");
-          formRef.current?.reset(); 
+          formRef.current?.reset();
           setTimeout(() => {
             resetModal();
           }, 2000);
@@ -87,7 +93,7 @@ const HireMeEnvelope = () => {
           console.error("EmailJS Error:", error);
           setStatus("error");
           toast.error("✕ Failed to send.");
-        }
+        },
       );
   };
 
@@ -222,11 +228,6 @@ const HireMeEnvelope = () => {
 
             {/* Content Container - Natural text entry flow completely interactive */}
             <div className="relative z-10 pl-12 md:pl-16 pr-2 pt-2 select-text">
-              <div className="flex justify-between items-center mb-6 text-[10px] font-mono text-neutral-500 uppercase tracking-wider pointer-events-none">
-                <span>MEMO_PAD // HIRE_ME</span>
-                <span className="font-bold text-red-500/80">PAGE.01</span>
-              </div>
-
               {/* Form Input Deck */}
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 {/* Field: Name */}
@@ -299,10 +300,12 @@ const HireMeEnvelope = () => {
                 </div>
 
                 {/* Hidden field capturing execution time for EmailJS template variable {{time}} */}
-                <input 
-                  type="hidden" 
-                  name="time" 
-                  value={new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" })} 
+                <input
+                  type="hidden"
+                  name="time"
+                  value={new Date().toLocaleString("en-US", {
+                    timeZone: "Asia/Manila",
+                  })}
                 />
 
                 {/* Form Action Controls */}

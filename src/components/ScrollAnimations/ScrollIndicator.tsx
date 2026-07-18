@@ -1,37 +1,24 @@
-import React, { useEffect, useState } from "react";
-
-// Shared Section Configurations
-export const SECTIONS = [
-  { id: "hero", label: "home", tip: "hero" },
-  { id: "stack", label: "Stack", tip: "Tech stack" },
-  { id: "experience", label: "Experience", tip: "Past work experiences" },
-  { id: "projects", label: "Projects", tip: "Good stuff" },
-  { id: "contacts", label: "Contacts", tip: "Become associates?" },
-];
-
-// Simple custom event to synchronize the active section state across decoupled components
-export const setGlobalActiveSection = (id) => {
-  const event = new CustomEvent("activeSectionChange", { detail: id });
-  window.dispatchEvent(event);
-};
+import { useEffect, useState } from "react";
+// Import the shared constants and utilities
+import { SECTIONS, setGlobalActiveSection } from "../constants/sections";
 
 export const ScrollIndicator = () => {
-  const [activeSection, setActiveSection] = useState("hero");
+  const [activeSection, setActiveSection] = useState<string>("hero");
 
   useEffect(() => {
-    // Sync local state with global event dispatch
-    const handleSectionChange = (e) => {
-      setActiveSection(e.detail);
+    const handleSectionChange = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      setActiveSection(customEvent.detail);
     };
     window.addEventListener("activeSectionChange", handleSectionChange);
 
-const observerOptions = {
-  root: null,
-  rootMargin: "-40% 0px -40% 0px",
-  threshold: 0,
-};
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      rootMargin: "-40% 0px -40% 0px",
+      threshold: 0,
+    };
 
-    const observerCallback = (entries) => {
+    const observerCallback: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setGlobalActiveSection(entry.target.id);
@@ -55,7 +42,7 @@ const observerOptions = {
     };
   }, []);
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: string): void => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -64,7 +51,6 @@ const observerOptions = {
 
   return (
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-5 items-end select-none">
-      {/* Vertical line track */}
       <div className="absolute right-[7px] top-2 bottom-2 w-[2px] bg-neutral-800/80 -z-10 rounded-full" />
 
       {SECTIONS.map((section) => {
@@ -77,7 +63,6 @@ const observerOptions = {
             className="group flex items-center gap-3 cursor-pointer focus:outline-none"
             aria-label={`Scroll to ${section.label}`}
           >
-            {/* Hover Tooltip/Label */}
             <span
               className={`font-mono text-xs font-bold uppercase tracking-wider transition-all duration-300 origin-right transform 
                 ${
@@ -89,7 +74,6 @@ const observerOptions = {
               {section.label}
             </span>
 
-            {/* Indicator Dot */}
             <div
               className={`relative w-4 h-4 rounded-full border-2 transition-all duration-300 flex items-center justify-center
                 ${
@@ -98,13 +82,11 @@ const observerOptions = {
                     : "border-neutral-700 bg-neutral-900 group-hover:border-neutral-500 scale-90"
                 }`}
             >
-              {/* Core active point */}
               <div
                 className={`w-1.5 h-1.5 rounded-full transition-transform duration-300 
                   ${isActive ? "bg-[#facc15] scale-100" : "bg-transparent scale-0"}`}
               />
 
-              {/* Ping Ring */}
               {isActive && (
                 <div className="absolute inset-0 rounded-full bg-[#facc15]/20 animate-ping pointer-events-none" />
               )}

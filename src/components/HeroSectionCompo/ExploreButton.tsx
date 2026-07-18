@@ -1,7 +1,5 @@
-import React from "react";
-
 const ExploreButton = () => {
-  const handleScrollToProjects = (e) => {
+  const handleScrollToProjects = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const projectsSection = document.getElementById("projects");
     if (projectsSection) {
