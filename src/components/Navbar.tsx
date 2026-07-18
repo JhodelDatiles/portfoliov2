@@ -1,29 +1,38 @@
 import { useState, useEffect } from "react";
 
+// 1. Declare the type structure for navigation link contracts
+interface NavLink {
+  href: string;
+  label: string;
+  tip: string;
+}
+
+// 2. Move links out of the component to optimize render memory and support Fast Refresh
+const LINKS: NavLink[] = [
+  { href: "#hero", label: "home", tip: "hero" },
+  { href: "#stack", label: "Stack", tip: "Tech stack" },
+  { href: "#experience", label: "Experience", tip: "Past work experiences" },
+  { href: "#projects", label: "Projects", tip: "Good stuff" },
+  { href: "#contacts", label: "Contacts", tip: "Become associates?" },
+];
+
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // Manages mobile menu toggle state
+  // 3. Explicitly type primitive states to ensure rigid boolean structures
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
-        isScrolled && setIsScrolled(false);
+        if (isScrolled) setIsScrolled(false);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isScrolled]);
-
-  const links = [
-    { href: "#hero", label: "home", tip: "hero" },
-    { href: "#stack", label: "Stack", tip: "Tech stack" },
-    { href: "#experience", label: "Experience", tip: "Past work experiences" },
-    { href: "#projects", label: "Projects", tip: "Good stuff" },
-    { href: "#contacts", label: "Contacts", tip: "Become associates?" },
-  ];
 
   return (
     <header
@@ -35,7 +44,6 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="navbar p-0 min-h-0 flex justify-between items-center relative">
-          {/* Logo / Brand Name */}
           <div className="flex-1">
             <a href="/" className="font-bold tracking-tight inline-block">
               <img
@@ -51,7 +59,7 @@ export default function Navbar() {
           {/* ================= DESKTOP NAVIGATION ================= */}
           <div className="hidden md:flex flex-none">
             <ul className="menu menu-horizontal px-1 gap-1">
-              {links.map((link) => (
+              {LINKS.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
@@ -101,10 +109,9 @@ export default function Navbar() {
               </svg>
             </button>
 
-            {/* Mobile Dropdown Panel Menu */}
             {isOpen && (
               <ul className="menu menu-vertical absolute right-0 top-full mt-4 p-4 gap-2 shadow-2xl bg-[#020617] border border-neutral-800 rounded-xl w-52 z-50 text-right items-end">
-                {links.map((link) => (
+                {LINKS.map((link) => (
                   <li key={link.href} className="w-full">
                     <a
                       href={link.href}

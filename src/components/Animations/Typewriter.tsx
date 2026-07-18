@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Typewriter = ({
   phrases = [
@@ -21,7 +21,7 @@ const Typewriter = ({
   );
 
   useEffect(() => {
-    let timer;
+    let timer: number;
 
     if (!isDeleting) {
       // Parallel typing phase
@@ -42,9 +42,11 @@ const Typewriter = ({
           setStep((prev) => prev - 1);
         }, deletingSpeed);
       } else {
-        // Switch to the next phrase pair
-        setIsDeleting(false);
-        setCurrentIndex((prev) => (prev + 1) % phrases.length);
+        // FIXED: Wrap state resets in a setTimeout to avoid synchronous cascading renders
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setCurrentIndex((prev) => (prev + 1) % phrases.length);
+        }, 0);
       }
     }
 

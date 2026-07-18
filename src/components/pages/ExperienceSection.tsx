@@ -1,5 +1,26 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  MotionValue,
+} from "framer-motion";
+
+interface ExperienceItem {
+  title: string;
+  subtitle: string;
+  description: string;
+  side: "left" | "right" | string;
+}
+
+// Type for TimelineItem component props
+interface TimelineItemProps {
+  exp: ExperienceItem;
+  progress: MotionValue<number>;
+  index: number;
+  total: number;
+}
 
 const experiences = [
   {
@@ -12,14 +33,13 @@ const experiences = [
   {
     title: "Coming soon...",
     subtitle: "Coming soon...",
-    description:
-      "Coming soon...",
+    description: "Coming soon...",
     side: "right",
   },
 ];
 
 const WorkExperienceSection = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -79,7 +99,7 @@ const WorkExperienceSection = () => {
   );
 };
 
-const TimelineItem = ({ exp, progress, index, total }) => {
+const TimelineItem = ({ exp, progress, index, total }: TimelineItemProps) => {
   const xStart = exp.side === "left" ? -40 : 40;
   const activationThreshold = (index + 0.3) / total;
   const isPowered = useTransform(

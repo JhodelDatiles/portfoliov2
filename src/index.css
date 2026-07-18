@@ -8,7 +8,7 @@
 }
 
 /* ==========================================================================
-   FONT-FACE DECLARATIONS
+  FONT-FACE DECLARATIONS
    ========================================================================== */
 
 /* 2. Fanky Bubble Graffiti (Regular) */
@@ -30,7 +30,7 @@
 }
 
 /* ==========================================================================
-   TAILWIND V4 THEME & UTILITIES
+  TAILWIND V4 THEME & UTILITIES
    ========================================================================== */
 
 @theme {
@@ -84,11 +84,15 @@ html::-webkit-scrollbar {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   background-color: #020617;
   color: #facc15;
   text-align: center;
   padding-left: 10px;
   padding-right: 10px;
 }
-
