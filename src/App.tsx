@@ -14,7 +14,6 @@ const App = () => {
       <Navbar />
       <Toaster />
       <ScrollIndicator />
-      {/* pt-32 (top padding) gives the starting navbar space to breathe */}
       <main className=" border-blue-100">
         <HeroSection />
         <StackSection />
