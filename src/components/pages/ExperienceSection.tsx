@@ -4,25 +4,10 @@ import {
   useScroll,
   useSpring,
   useTransform,
-  MotionValue,
 } from "framer-motion";
+import type { ExperienceItem, TimelineItemProps } from "../interface/experienceSectionInterface";
 
-interface ExperienceItem {
-  title: string;
-  subtitle: string;
-  description: string;
-  side: "left" | "right" | string;
-}
-
-// Type for TimelineItem component props
-interface TimelineItemProps {
-  exp: ExperienceItem;
-  progress: MotionValue<number>;
-  index: number;
-  total: number;
-}
-
-const experiences = [
+const experiences: ExperienceItem[] = [
   {
     title: "QA Intern",
     subtitle: "Sparkle Star International // Jan - Apr 2026",

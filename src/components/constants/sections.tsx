@@ -1,9 +1,4 @@
-// Define types for the section shape
-export interface SectionConfig {
-  id: string;
-  label: string;
-  tip: string;
-}
+import {type SectionConfig} from "../interface/constantSectionsInterface"
 
 // Strongly type the global static configurations
 export const SECTIONS: SectionConfig[] = [

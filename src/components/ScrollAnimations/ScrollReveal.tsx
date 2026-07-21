@@ -1,10 +1,6 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
-
+import { useEffect, useRef, useState } from "react";
 // 1. Define types for the component's accepted properties
-interface ScrollRevealProps {
-  children: ReactNode;
-  delay?: number; // Optional prop with a fallback value
-}
+import {type ScrollRevealProps} from "../interface/scrollRevealInterface"
 
 export const ScrollReveal = ({ children, delay = 0 }: ScrollRevealProps) => {
   const [isIntersecting, setIsIntersecting] = useState<boolean>(false);

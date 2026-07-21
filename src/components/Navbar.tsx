@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 
 // 1. Declare the type structure for navigation link contracts
-interface NavLink {
-  href: string;
-  label: string;
-  tip: string;
-}
+import {type NavLink} from "./interface/navbarInterface"
 
 // 2. Move links out of the component to optimize render memory and support Fast Refresh
 const LINKS: NavLink[] = [
